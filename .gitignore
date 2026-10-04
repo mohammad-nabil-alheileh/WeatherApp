@@ -1,0 +1,35 @@
+# Operating system files
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editors and IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Python (serve.py)
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# Node tooling (npx serve and similar)
+node_modules/
+npm-debug.log*
+package-lock.json
+
+# Logs and temporary files
+*.log
+*.tmp
+*.bak
+
+# Environment files
+.env
+.env.*
+
+# Archives
+*.tar.gz
+*.zip

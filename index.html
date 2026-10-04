@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Weather Now</title>
+  <link rel="icon" href="assets/images/favicon-32x32.png">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body data-view="loading">
+  <div class="layout">
+
+    <header class="site-header">
+      <img class="site-header__logo" src="assets/images/logo.svg" alt="Weather Now">
+      <div class="dropdown">
+        <button class="button dropdown__toggle" id="units-toggle" type="button"
+                aria-controls="units-menu" aria-expanded="false" aria-haspopup="true">
+          <img src="assets/images/icon-units.svg" alt="">
+          <span>Units</span>
+          <img src="assets/images/icon-dropdown.svg" alt="">
+        </button>
+        <div class="dropdown__menu dropdown__menu--units" id="units-menu" role="menu" hidden></div>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero" aria-labelledby="hero-title">
+        <h1 class="hero__title" id="hero-title">How’s the sky looking today?</h1>
+        <form class="search-form" id="search-form" role="search" autocomplete="off">
+          <div class="search-form__field">
+            <img class="search-form__icon" src="assets/images/icon-search.svg" alt="">
+            <input class="search-form__input" id="search-input" type="search"
+                   placeholder="Search for a place..." aria-label="Search for a place">
+            <div class="dropdown__menu dropdown__menu--suggestions" id="search-suggestions" hidden></div>
+          </div>
+          <button class="search-form__submit" type="submit">Search</button>
+        </form>
+        <p class="empty-state" role="status">No search result found!</p>
+      </section>
+
+      <section class="error-state" role="alert">
+        <img class="error-state__icon" src="assets/images/icon-error.svg" alt="">
+        <h2 class="error-state__title">Something went wrong</h2>
+        <p class="error-state__message">We couldn’t connect to the server (API error). Please try again in a few moments.</p>
+        <button class="button" id="retry-button" type="button">
+          <img src="assets/images/icon-retry.svg" alt="">Retry
+        </button>
+      </section>
+
+      <div class="weather">
+        <div class="weather__summary">
+
+          <section class="current-weather current-weather--loading" id="current-weather" aria-label="Current weather">
+            <div class="current-weather__loader">
+              <span class="loader-dots" aria-hidden="true">
+                <i class="loader-dots__dot"></i><i class="loader-dots__dot"></i><i class="loader-dots__dot"></i>
+              </span>
+              Loading...
+            </div>
+            <div class="current-weather__body">
+              <div class="current-weather__location">
+                <h2 class="current-weather__city" id="current-city"></h2>
+                <time class="current-weather__date" id="current-date"></time>
+              </div>
+              <div class="current-weather__reading">
+                <img class="current-weather__icon" id="current-icon" src="assets/images/icon-sunny.webp" alt="">
+                <p class="current-weather__temperature" id="current-temperature"></p>
+              </div>
+            </div>
+          </section>
+
+          <section aria-label="Current conditions">
+            <dl class="conditions">
+              <div class="conditions__item">
+                <dt class="conditions__label">Feels Like</dt>
+                <dd class="conditions__value" id="feels-like">—</dd>
+              </div>
+              <div class="conditions__item">
+                <dt class="conditions__label">Humidity</dt>
+                <dd class="conditions__value" id="humidity">—</dd>
+              </div>
+              <div class="conditions__item">
+                <dt class="conditions__label">Wind</dt>
+                <dd class="conditions__value" id="wind">—</dd>
+              </div>
+              <div class="conditions__item">
+                <dt class="conditions__label">Precipitation</dt>
+                <dd class="conditions__value" id="precipitation">—</dd>
+              </div>
+            </dl>
+          </section>
+
+          <section class="daily-forecast" aria-labelledby="daily-forecast-title">
+            <h2 class="daily-forecast__title" id="daily-forecast-title">Daily forecast</h2>
+            <ol class="daily-forecast__list" id="daily-forecast-list"></ol>
+          </section>
+
+        </div>
+
+        <section class="hourly-forecast" aria-labelledby="hourly-forecast-title">
+          <div class="hourly-forecast__inner">
+            <div class="hourly-forecast__header">
+              <h2 class="hourly-forecast__title" id="hourly-forecast-title">Hourly forecast</h2>
+              <div class="dropdown">
+                <button class="button dropdown__toggle hourly-forecast__day-toggle" id="day-toggle" type="button"
+                        aria-controls="day-menu" aria-expanded="false" aria-haspopup="true" disabled>
+                  <span id="day-label">–</span>
+                  <img src="assets/images/icon-dropdown.svg" alt="">
+                </button>
+                <div class="dropdown__menu dropdown__menu--days" id="day-menu" role="menu" hidden></div>
+              </div>
+            </div>
+            <ol class="hourly-forecast__list" id="hourly-list"></ol>
+          </div>
+        </section>
+      </div>
+    </main>
+
+  </div>
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>
